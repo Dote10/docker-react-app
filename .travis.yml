@@ -12,5 +12,14 @@ before_install:
 script:
   - docker run -e CI=true surge100/docker-react-app-test npm run test -- --coverage
 
-after_success:
-  - echo "Test Suceess"
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-northeast-2"
+  app: "docker-react-app-test"
+  env: "Dockerreactapptest-env"
+  bucket_name: "elasticbeanstalk-ap-northeast-2-828981026636"
+  bucket_path: "docker-react-app-test"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
