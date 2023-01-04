@@ -28,6 +28,13 @@ jobs:
       #     AWS_S3_BUCKET: "elasticbeanstalk-ap-northeast-2-828981026636"
       #     AWS_REGION: "ap-northeast-2"
 
+      - name: Get current time
+        uses: josStorer/get-current-time@v2.0.2
+        id: current-time
+        with:
+          format: YYYY-MM-DDTHH-mm-ss
+          utcOffset: "+09:00"
+
       - name: Beanstalk Deploy
         uses: einaregilsson/beanstalk-deploy@v21
         with:
@@ -36,6 +43,6 @@ jobs:
           application_name: docker-react-app-test
           environment_name: Dockerreactapptest-env
           region: "ap-northeast-2"
-          # version_label: github-action-${{steps.current-time.outputs.formattedTime}}
+          version_label: github-action-${{steps.current-time.outputs.formattedTime}}
           existing_bucket_name: "elasticbeanstalk-ap-northeast-2-828981026636"
-          deployment_package: deploy/deploy.zip
+          #deployment_package: deploy/deploy.zip
