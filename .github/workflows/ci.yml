@@ -19,7 +19,10 @@ jobs:
         run: docker build -t surge100/docker-react-app-test -f Dockerfile.dev ./
 
       - name: Run the Docker image
-        run: docker run surge100/docker-react-app-test npm run test -- --coverage
+        run: docker run surge100/docker-react-app-test
+
+      - name: Run npm test
+        run: npm run test -- --coverage
 
       - name: Get current time
         uses: josStorer/get-current-time@v2.0.2
