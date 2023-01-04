@@ -1,0 +1,30 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:  
+    - uses: actions/checkout@v3
+    - uses: isbang/compose-ation@v1.4.1
+      with:
+        compose-file: "./docker/docker-compose.yml"
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile.dev
+      
+    - name: Beanstalk Deploy
+      uses: einaregilsson/beanstalk-deploy@14
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_key: ${{secret.AWS_SECRET_ACCESS_KEY}}
+        application_name: docker-react-app-test
+        enviroment_name: Dockerreactapptest.env
+        
