@@ -26,7 +26,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_BUCKET: "elasticbeanstalk-ap-northeast-2-828981026636"
-          AWS_S3_ENDPOINT: docker-react-app-test
           AWS_REGION: "ap-northeast-2"
 
       - name: Beanstalk Deploy
@@ -35,6 +34,6 @@ jobs:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: docker-react-app-test
-          environment_name: Dockerreactapptest-env
+          environment_name: Dockerreactapptest-env-1
           region: "ap-northeast-2"
           version_label: github-action-${{steps.current-time.outputs.formattedTime}}
