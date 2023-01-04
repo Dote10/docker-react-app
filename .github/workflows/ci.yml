@@ -34,6 +34,6 @@ jobs:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: docker-react-app-test
-          environment_name: Dockerreactapptest-env-1
+          environment_name: Dockerreactapptest-env
           region: "ap-northeast-2"
           version_label: github-action-${{steps.current-time.outputs.formattedTime}}
