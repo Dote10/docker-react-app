@@ -27,6 +27,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_BUCKET: "elasticbeanstalk-ap-northeast-2-828981026636"
           AWS_REGION: "ap-northeast-2"
+          source_dir: "./deploy"
 
       - name: Beanstalk Deploy
         uses: einaregilsson/beanstalk-deploy@v21
@@ -37,4 +38,3 @@ jobs:
           environment_name: Dockerreactapptest-env-1
           region: "ap-northeast-2"
           version_label: github-action-${{steps.current-time.outputs.formattedTime}}
-          source_dir: "./deploy"
