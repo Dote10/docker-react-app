@@ -16,9 +16,8 @@ jobs:
       #   with:
       #     compose-file: "./docker-compose.yml"
       - name: Build the Docker image
-        run: docker build -t surge100/docker-react-app-test -f Dockerfile.dev ./
-
-      - name: Run the Docker image
+        run: docker build --tag surge100/docker-react-app-test --file Dockerfile.dev ./
+      - name: Run the Docker imag
         run: docker run surge100/docker-react-app-test npm run test -- --coverage
 
       - name: Get current time
