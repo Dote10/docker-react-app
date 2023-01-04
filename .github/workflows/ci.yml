@@ -18,22 +18,36 @@ jobs:
       # - name: Build the Docker image
       #   run: docker build . --file Dockerfile.dev
 
-      - name: Run s3-sync-action
-        uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --acl public-read --follow-symlinks --delete
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_S3_BUCKET: "elasticbeanstalk-ap-northeast-2-828981026636"
-          AWS_REGION: "ap-northeast-2"
+      # - name: Run s3-sync-action
+      #   uses: jakejarvis/s3-sync-action@master
+      #   with:
+      #     args: --acl public-read --follow-symlinks --delete
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     AWS_S3_BUCKET: "elasticbeanstalk-ap-northeast-2-828981026636"
+      #     AWS_REGION: "ap-northeast-2"
 
-      - name: Beanstalk Deploy
-        uses: einaregilsson/beanstalk-deploy@v21
+      - name: Elastic Beanstalk Deployment
+        uses: kumarshivam12/Aws-ElasticBeanstalk@v1.3
         with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: docker-react-app-test
-          environment_name: Dockerreactapptest-env
-          region: "ap-northeast-2"
-          version_label: github-action-${{steps.current-time.outputs.formattedTime}}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          EB-BUCKET-NAME: "elasticbeanstalk-ap-northeast-2-828981026636"
+            description: Enter The Name of the S3 Bucket
+          APPLICATION-NAME: docker-react-app-test
+            description: Enter the name of the Elastic BeanStalk Application
+          EB-ENV-NAME: Dockerreactapptest-env
+            description: Name of the Elastic beanstalk Environment
+          AWS-REGION: "ap-northeast-2"
+            description: Enter the Region
+
+      # - name: Beanstalk Deploy
+      #   uses: einaregilsson/beanstalk-deploy@v21
+      #   with:
+      #     aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     application_name: docker-react-app-test
+      #     environment_name: Dockerreactapptest-env
+      #     region: "ap-northeast-2"
+      #     version_label: github-action-${{steps.current-time.outputs.formattedTime}}
