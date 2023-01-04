@@ -27,7 +27,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_BUCKET: "elasticbeanstalk-ap-northeast-2-828981026636"
           AWS_REGION: "ap-northeast-2"
-          source_dir: "./deploy"
 
       - name: Beanstalk Deploy
         uses: einaregilsson/beanstalk-deploy@v21
