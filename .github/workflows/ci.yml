@@ -29,7 +29,7 @@ jobs:
       #     AWS_REGION: "ap-northeast-2"
 
       - name: Elastic Beanstalk Deployment
-        uses: kumarshivam12/Aws-ElasticBeanstalk@v1.3
+        uses: kumarshivam12/Aws-ElasticBeanstalk@v1.4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
