@@ -15,18 +15,6 @@ jobs:
       - uses: isbang/compose-action@v1.4.1
         with:
           compose-file: "./docker-compose.yml"
-      # - name: Build the Docker image
-      #   run: docker build . --file Dockerfile.dev
-
-      # - name: Run s3-sync-action
-      #   uses: jakejarvis/s3-sync-action@master
-      #   with:
-      #     args: --acl public-read --follow-symlinks --delete
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     AWS_S3_BUCKET: "elasticbeanstalk-ap-northeast-2-828981026636"
-      #     AWS_REGION: "ap-northeast-2"
 
       - name: Get current time
         uses: josStorer/get-current-time@v2.0.2
@@ -44,7 +32,7 @@ jobs:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: docker-react-app-test
-          environment_name: Dockerreactapptest-env
+          environment_name: Dockerreactapptest-env-1
           region: "ap-northeast-2"
           version_label: github-action-${{steps.current-time.outputs.formattedTime}}
           existing_bucket_name: "elasticbeanstalk-ap-northeast-2-828981026636"
