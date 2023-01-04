@@ -36,6 +36,6 @@ jobs:
           application_name: docker-react-app-test
           environment_name: Dockerreactapptest-env
           region: "ap-northeast-2"
-          version_label: "2008-10-17"
-          #version_label: github-action-${{steps.current-time.outputs.formattedTime}}
+          version_label: github-action-${{steps.current-time.outputs.formattedTime}}
           existing_bucket_name: "elasticbeanstalk-ap-northeast-2-828981026636"
+          deployment_package: deploy/deploy.zip
