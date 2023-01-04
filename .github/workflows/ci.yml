@@ -12,17 +12,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      # - uses: isbang/compose-action@v1.4.1
-      #   with:
-      #     compose-file: "./docker-compose.yml"
-      - name: Build the Docker image
-        run: docker build --tag surge100/docker-react-app-test --file Dockerfile.dev ./
+      - uses: isbang/compose-action@v1.4.1
+        with:
+          compose-file: "./docker-compose.yml"
+      # - name: Build the Docker image
+      #   run: docker build --tag surge100/docker-react-app-test --file Dockerfile.dev ./
 
-      - name: Test the Docker image
-        run: docker run surge100/docker-react-app-test npm run test -- --coverage
+      # - name: Test the Docker image
+      #   run: docker run surge100/docker-react-app-test npm run test -- --coverage
 
-      - name: Run the Docker image
-        run: docker run surge100/docker-react-app-test
+      # - name: Run the Docker image
+      #   run: docker run surge100/docker-react-app-test
 
       - name: Get current time
         uses: josStorer/get-current-time@v2.0.2
