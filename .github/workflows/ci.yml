@@ -45,4 +45,4 @@ jobs:
           region: "ap-northeast-2"
           version_label: github-action-${{steps.current-time.outputs.formattedTime}}
           existing_bucket_name: "elasticbeanstalk-ap-northeast-2-828981026636"
-          deployment_package: deploy/deploy.zip
+          deployment_package: deploy.zip
